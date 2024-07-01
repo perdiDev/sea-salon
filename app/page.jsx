@@ -1,3 +1,5 @@
+import Review from "./_component/review";
+
 export default function Home() {
   return (
     <main className="flex-1">
@@ -37,6 +39,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Review />
       <section id="contact" className="bg-muted py-12 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Contact Us</h2>

@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./_component/header";
 import Footer from "./_component/footer";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </div>
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );
