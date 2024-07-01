@@ -15,14 +15,26 @@ import { SendIcon } from "lucide-react";
 import { HeartIcon } from "lucide-react";
 import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
+import { submitReview } from "../actions/review";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function GiveReview() {
   const [rating, setRating] = useState(0);
+  const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
+
+  const handleSubmit = async () => {
+    try {
+      const review = await submitReview(name, rating, comment);
+      console.log("Review submitted successfully!", review);
+    } catch (error) {
+      console.error("Failed to submit review:", error);
+    }
+  };
 
   // Catch Rating value
   const handleRating = (rate) => {
     setRating(rate);
-    console.log(rate);
   };
   return (
     <Dialog>
@@ -49,23 +61,28 @@ export default function GiveReview() {
             </Label>
             <Input
               id="name"
-              defaultValue="Pedro Duarte"
               className="col-span-3"
+              name="name"
+              onChange={(e) => setName(e.target.value)}
+              required
             />
           </div>
           <div className="flex flex-col items-start gap-2">
-            <Label htmlFor="username" className="text-right">
+            <Label htmlFor="comment" className="text-right">
               Comment
             </Label>
-            <Input
-              id="username"
-              defaultValue="@peduarte"
+            <Textarea
+              id="comment"
               className="col-span-3"
+              name="comment"
+              type="textarea"
+              onChange={(e) => setComment(e.target.value)}
+              required
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" className="gap-2">
+          <Button type="submit" className="gap-2" onClick={handleSubmit}>
             <SendIcon className="size-4" /> Send
           </Button>
         </DialogFooter>
