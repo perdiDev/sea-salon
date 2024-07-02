@@ -38,7 +38,6 @@ export async function updateSession(request) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // const user = await supabase.auth.getUser();
   const url = new URL(request.url);
   const next = url.searchParams.get("next");
   if (!user) {

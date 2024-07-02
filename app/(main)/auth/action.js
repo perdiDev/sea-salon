@@ -16,10 +16,27 @@ export async function login(formData) {
     password: formData.get("password"),
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.signInWithPassword(data);
+
+  console.log(user);
+
+  const userInfo = await prisma.user.findFirst({
+    where: {
+      id_user: user.id,
+    },
+  });
+
+  console.log(userInfo);
 
   if (error) {
     redirect("/error");
+  }
+
+  if (userInfo.role === "Admin") {
+    redirect("/admin");
   }
 
   revalidatePath("/", "layout");

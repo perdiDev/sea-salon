@@ -22,6 +22,21 @@ pnpm install
 
 Untuk memulai env, Anda perlu login ke [Supabase](https://supabase.com) untuk mendapatkan anonkey, url, dan direct url.
 
+1. Mendapatkan NEXT_PUBLIC_SUPABASE_URL dan NEXT_PUBLIC_SUPABASE_ANON_KEY di Supabase
+
+![alt text](<Screenshot 2024-07-02 175459.png>)
+
+2. Mendapatkan DATABASE_URL dan DIRECT_URL di Supabase
+   ![alt text](<Screenshot 2024-07-02 180336.png>)
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=<Your_Supbase_URL>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<Your_anon_Key>
+
+DATABASE_URL=<Your_URL>?pgbouncer=true&connection_limit=1
+DIRECT_URL=<Your_URL>
+```
+
 ### 🗂️ Prisma Init
 
 ```bash
@@ -32,6 +47,12 @@ pnpm dlx prisma init
 
 ```bash
 pnpm prisma migrate dev --name init
+```
+
+### 🔄 Prisma Seed Database
+
+```bash
+pnpm seed
 ```
 
 ### ▶️ Run Development Mode

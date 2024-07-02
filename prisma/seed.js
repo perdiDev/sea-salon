@@ -9,32 +9,38 @@ const supabase = createClient(
 );
 
 async function main() {
-  const userId = "generateduser123"; // Replace with your unique user ID
-
-  // Upsert user in the database
-  const thomas = await prisma.user.upsert({
-    where: { id_user: userId },
-    update: {},
-    create: {
-      id_user: userId,
-      email: "thomas.n@compfest.id",
-      fullname: "Thomas N",
-      phone: "628123456789",
-      password: "Admin123",
-      role: "Admin",
-    },
-  });
+  const email = "thomas.n@compfest.id";
+  const password = "Admin123";
+  const fullname = "Thomas N";
+  const phone = "628123456789";
+  const role = "Admin";
 
   // Register user in Supabase
   const { data, error } = await supabase.auth.signUp({
-    email: thomas.email,
-    password: thomas.password,
+    email: email,
+    password: password,
     options: {
       data: {
-        fullname: thomas.fullname,
-        phone: thomas.phone,
-        role: thomas.role,
+        fullname: fullname,
+        phone: phone,
+        role: role,
       },
+    },
+  });
+
+  console.log(data);
+
+  // Upsert user in the database
+  const thomas = await prisma.user.upsert({
+    where: { id_user: data.user.id },
+    update: {},
+    create: {
+      id_user: data.user.id,
+      email: email,
+      fullname: fullname,
+      phone: phone,
+      password: password,
+      role: role,
     },
   });
 
