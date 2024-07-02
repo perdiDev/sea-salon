@@ -3,6 +3,10 @@ import { Separator } from "@/components/ui/separator";
 import { StarIcon } from "lucide-react";
 import GiveReview from "./giveReview";
 import prisma from "@/lib/prisma";
+import TimeAgo from "javascript-time-ago";
+
+// English.
+import en from "javascript-time-ago/locale/en";
 
 async function Review() {
   const reviewData = await prisma.review.findMany({
@@ -11,6 +15,11 @@ async function Review() {
       created: "desc",
     },
   });
+
+  TimeAgo.addDefaultLocale(en);
+
+  // Create formatter (English).
+  const timeAgo = new TimeAgo("en-US");
 
   return (
     <section className="bg-background px-4 py-12 md:px-6 lg:py-16">
@@ -35,7 +44,7 @@ async function Review() {
                   <div className="flex items-center gap-2">
                     <h3 className="text-lg font-semibold">{data.name}</h3>
                     <span className="text-sm text-muted-foreground">
-                      2 days ago
+                      {timeAgo.format(data.created)}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">

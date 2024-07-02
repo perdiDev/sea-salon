@@ -17,16 +17,23 @@ import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import { submitReview } from "../actions/review";
 import { Textarea } from "@/components/ui/textarea";
+import { useRouter } from "next/navigation";
 
 export default function GiveReview() {
   const [rating, setRating] = useState(0);
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const router = useRouter();
 
   const handleSubmit = async () => {
     try {
       const review = await submitReview(name, rating, comment);
       console.log("Review submitted successfully!", review);
+
+      setOpen(false);
+      router.refresh();
     } catch (error) {
       console.error("Failed to submit review:", error);
     }
@@ -37,7 +44,7 @@ export default function GiveReview() {
     setRating(rate);
   };
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="flex justify-center items-center gap-2">
           <HeartIcon className="size-4 fill-primary" />
