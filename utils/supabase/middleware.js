@@ -38,20 +38,13 @@ export async function updateSession(request) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // if (!user && protectedPaths.includes) {
-  //   // no user, potentially respond by redirecting the user to the login page
-  //   const url = request.nextUrl.clone();
-  //   url.pathname = "/auth/login";
-  //   return NextResponse.redirect(url);
-  // }
-
   // const user = await supabase.auth.getUser();
   const url = new URL(request.url);
   const next = url.searchParams.get("next");
   if (!user) {
     if (protectedPaths.includes(url.pathname)) {
       return NextResponse.redirect(
-        new URL("/signin?next=" + (next || url.pathname), request.url)
+        new URL("/auth/login?next=" + (next || url.pathname), request.url)
       );
     }
     return response;

@@ -12,7 +12,6 @@ async function Review() {
     },
   });
 
-  console.log(reviewData);
   return (
     <section className="bg-background px-4 py-12 md:px-6 lg:py-16">
       <div className="mx-auto max-w-6xl">
@@ -57,60 +56,6 @@ async function Review() {
               <Separator />
             </>
           ))}
-          <div className="flex gap-4">
-            <Avatar className="w-12 h-12 border">
-              <AvatarImage src="/user_placeholder.jpg" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <div className="grid gap-2">
-              <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold">Alex Smith</h3>
-                <span className="text-sm text-muted-foreground">
-                  3 weeks ago
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <StarIcon className="w-5 h-5 fill-primary" />
-                <StarIcon className="w-5 h-5 fill-primary" />
-                <StarIcon className="w-5 h-5 fill-primary" />
-                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-              </div>
-              <p className="text-muted-foreground">
-                I've been coming to this salon for years and they never
-                disappoint. The stylists are true artists and always listen to
-                my needs. I highly recommend this place to anyone looking for a
-                great salon experience.
-              </p>
-            </div>
-          </div>
-          <Separator />
-          <div className="flex gap-4">
-            <Avatar className="w-12 h-12 border">
-              <AvatarImage src="/user_placeholder.jpg" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <div className="grid gap-2">
-              <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold">Emily Parker</h3>
-                <span className="text-sm text-muted-foreground">
-                  2 days ago
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <StarIcon className="w-5 h-5 fill-primary" />
-                <StarIcon className="w-5 h-5 fill-primary" />
-                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-              </div>
-              <p className="text-muted-foreground">
-                I had a mixed experience at this salon. The stylist did a good
-                job with my haircut, but the overall atmosphere felt a bit
-                rushed and impersonal. I may try a different salon next time.
-              </p>
-            </div>
-          </div>
         </div>
         {/* Review button */}
         <div className="flex justify-center pt-12">

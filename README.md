@@ -39,7 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Instalasi
 
-Disarankan untuk menggunakan pnpm agar tidak ada kesalahan yang terhadi
+Disarankan untuk menggunakan pnpm agar tidak ada kesalahan yang terjadi
 
 ### Clone this repo
 
@@ -53,8 +53,18 @@ git clone
 pnpm install
 ```
 
+### Setup env
+
+To start env you need to login to supabase for get the anonkey, url, and direct url
+
 ### Prisma init
 
 ```git
 pnpm dlx prisma init
 ```
+
+```git
+pnpm prisma migrate dev --name init
+```
+
+# Semoga DILOLOSKAN PANITIA. AAMIIIN.
