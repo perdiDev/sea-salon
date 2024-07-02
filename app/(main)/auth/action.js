@@ -4,12 +4,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export async function login(formData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   const data = {
     email: formData.get("email"),
     password: formData.get("password"),
@@ -27,23 +28,42 @@ export async function login(formData) {
 
 export async function signup(formData) {
   const supabase = createClient();
+  console.log("Masuk");
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+  const email = formData.get("email");
+  const password = formData.get("password");
+  const fullname = formData.get("fullname");
+  const phone = formData.get("phone");
+
   const data = {
-    email: formData.get("email"),
-    password: formData.get("password"),
+    email: email,
+    password: password,
     options: {
       data: {
-        fullname: formData.get("fullName"),
-        phone: formData.get("phone"),
+        fullname: fullname,
+        phone: phone,
       },
     },
   };
+  console.log("Mulai");
 
   const { error } = await supabase.auth.signUp(data);
+  console.log("Setelah signUp");
+
+  await prisma.user.create({
+    data: {
+      fullname,
+      email,
+      password,
+      fullname,
+      phone,
+    },
+  });
+
+  console.log("Finish");
 
   if (error) {
+    console.log(error);
     redirect("/error");
   }
 

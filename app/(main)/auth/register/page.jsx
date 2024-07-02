@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { signup } from "../action";
 
 function page() {
   return (
@@ -63,7 +64,7 @@ function page() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button type="submit" className="w-full">
+            <Button formAction={signup} className="w-full">
               Register
             </Button>
           </CardFooter>

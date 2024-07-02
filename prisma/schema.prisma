@@ -8,6 +8,35 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+model User {
+  id_user Int @id @default(autoincrement())
+  fullname String
+  email String 
+  phone String
+  password String
+  role Role @default(Customer)
+  reservations Reservation[]
+}
+
+enum Role {
+  Admin
+  Customer
+}
+
+model Reservation {
+  id_reservation Int @id @default(autoincrement())
+  user_id Int
+  user User @relation(fields: [user_id], references: [id_user])
+  startTime DateTime?
+}
+
+model Service {
+  id_service Int @id @default(autoincrement())
+  service_name String 
+  description String
+  price Int
+}
+
 model Review {
   id Int @id @default(autoincrement())
   name String

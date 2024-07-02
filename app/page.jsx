@@ -1,15 +1,32 @@
+import { Button } from "@/components/ui/button";
 import Review from "./_component/review";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex-1">
+    <main className="flex-1 text-pink-800">
       <section
         id="hero"
-        className="bg-primary py-16 px-6 flex justify-center items-center"
+        className="bg-gradient-to-br from-purple-400 to bg-pink-400 flex flex-row h-[75vh]"
       >
-        <div className="container mx-auto text-center text-primary-foreground">
-          <h1 className="text-4xl font-bold mb-4">SEA Salon</h1>
+        <div className="container mx-auto text-center text-primary-foreground w-full md:w-1/2 px-12 flex flex-col items-start justify-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-2 text-pink-100 text-left">
+            SEA Salon explore your Beauty
+          </h1>
           <p className="text-xl">Beauty and Elegance Redefined</p>
+          <Button asChild className="mt-8">
+            <Link href={"/services"}>Go to Reserve</Link>
+          </Button>
+        </div>
+        <div className="hidden w-1/2 md:flex justify-center items-center">
+          <Image
+            src={"/hero.jpg"}
+            alt="hero-image"
+            width={400}
+            height={400}
+            className="h-96 w-fit bg-blue-300 rounded-3xl"
+          />
         </div>
       </section>
       <section id="services" className="py-12 px-6">

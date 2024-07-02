@@ -13,6 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserIcon } from "lucide-react";
 import { LogOutIcon } from "lucide-react";
+import { redirect } from "next/navigation";
 
 async function Header() {
   const supabase = createClient();
@@ -20,6 +21,15 @@ async function Header() {
     data: { user },
     e,
   } = await supabase.auth.getUser();
+
+  const handleLogout = async () => {
+    "use server";
+
+    const supabase = await createClient();
+    await supabase.auth.signOut();
+    redirect("/");
+  };
+
   return (
     <header className="bg-primary text-primary-foreground py-4 px-6">
       <div className="container mx-auto flex items-center justify-between">
@@ -66,14 +76,15 @@ async function Header() {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link
-                    href="#"
-                    className="flex items-center gap-2"
-                    prefetch={false}
-                  >
-                    <LogOutIcon className="h-4 w-4" />
-                    <span>Sign out</span>
-                  </Link>
+                  <form>
+                    <Button
+                      formAction={handleLogout}
+                      className="flex items-center gap-2"
+                    >
+                      <LogOutIcon className="h-4 w-4" />
+                      <span>Sign out</span>
+                    </Button>
+                  </form>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
