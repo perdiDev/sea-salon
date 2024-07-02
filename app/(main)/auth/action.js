@@ -28,7 +28,6 @@ export async function login(formData) {
 
 export async function signup(formData) {
   const supabase = createClient();
-  console.log("Masuk");
 
   const email = formData.get("email");
   const password = formData.get("password");
@@ -45,13 +44,16 @@ export async function signup(formData) {
       },
     },
   };
-  console.log("Mulai");
 
-  const { error } = await supabase.auth.signUp(data);
-  console.log("Setelah signUp");
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.signUp(data);
+  console.log(user);
 
   await prisma.user.create({
     data: {
+      id_user: user.id,
       fullname,
       email,
       password,

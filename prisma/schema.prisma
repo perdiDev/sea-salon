@@ -9,9 +9,9 @@ datasource db {
 }
 
 model User {
-  id_user Int @id @default(autoincrement())
+  id_user String @id @unique
   fullname String
-  email String 
+  email String @unique
   phone String
   password String
   role Role @default(Customer)
@@ -25,9 +25,10 @@ enum Role {
 
 model Reservation {
   id_reservation Int @id @default(autoincrement())
-  user_id Int
+  user_id String
   user User @relation(fields: [user_id], references: [id_user])
-  startTime DateTime?
+  start_time DateTime
+  total_price Int
 }
 
 model Service {
