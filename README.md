@@ -1,70 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SEA SALON Documentation
 
-## Getting Started
+Link website: https://sea-salon-sand.vercel.app/
 
-First, run the development server:
+## 🚀 Instalasi
+
+Disarankan untuk menggunakan pnpm agar tidak ada kesalahan yang terjadi.
+
+### 📦 Clone this repo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://example.com/sea-salon.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📥 Install dependensi
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-# Dokumentasi
-
-## Instalasi
-
-Disarankan untuk menggunakan pnpm agar tidak ada kesalahan yang terjadi
-
-### Clone this repo
-
-```git
-git clone
-```
-
-### Install dependensi
-
-```git
+```bash
 pnpm install
 ```
 
-### Setup env
+### 🔧 Setup Environment
 
-To start env you need to login to supabase for get the anonkey, url, and direct url
+Untuk memulai env, Anda perlu login ke [Supabase](https://supabase.com) untuk mendapatkan anonkey, url, dan direct url.
 
-### Prisma init
+### 🗂️ Prisma Init
 
-```git
+```bash
 pnpm dlx prisma init
 ```
 
-```git
+### 🔄 Prisma Migrate
+
+```bash
 pnpm prisma migrate dev --name init
 ```
 
-# Semoga DILOLOSKAN PANITIA. AAMIIIN.
+### ▶️ Run Development Mode
+
+```bash
+pnpm run dev
+```
+
+## ✨ Fitur
+
+- Homepage ✅
+- Review with Persistent data (Use Database) ✅
+- Authentication ✅
+- Reservation with Authenticated user ✅
+- Admin
+
+## 🛠️ Technology Stack
+
+- **NextJS**: Framework development for fullstack app
+- **Supabase**: Authentication provider
+- **Supabase**: Serverless drive for database
+- **Prisma**: ORM that integrated application with Supabase
+- **Vercel**: Deployment application
+- **PNPM**: Package organizer
+- **Database**: PostgreSQL (implicit)
+- **and Other NPM Packages**
+
+## 👨‍💼 Informasi Diri
+
+- **Nama**: Perdi
+- **Pekerjaan**: Mahasiswa
+- **Kampus**: Universitas Hasanuddin (Teknik Informatika)
+- **Asal**: Makassar, Sulawesi Selatan
+
+## 🙏 Semoga DILOLOSKAN PANITIA. AAMIIIN.

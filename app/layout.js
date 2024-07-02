@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./_component/header";
 import Footer from "./_component/footer";
 import { Toaster } from "sonner";
+import NextTopLoader from "nextjs-toploader";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
+        <NextTopLoader />
         <div className="flex flex-col min-h-[100dvh]">
           <Header />
           {children}
